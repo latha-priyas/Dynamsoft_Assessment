@@ -1,0 +1,215 @@
+<html>
+
+<head>
+    <title>Hello World</title>
+    <link href="firstpage.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="Resources/dynamsoft.webtwain.initiate.js"></script>
+    <script src="Resources/dynamsoft.webtwain.config.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+</head>
+
+<body>
+    
+    <div class="dwtcontrolContainer">
+       
+        <input type="button" value="Scan" onclick="AcquireImage();" />
+ 
+        <div class="ScrollStyle">
+            Image1 </br>
+            Image1 </br>
+            Image1 </br>
+            Image1 </br>
+            Image1 </br>
+            Image1 </br>
+
+            Image1 </br>
+            Image1 </br>
+            Image1 </br>
+            Image1 </br>
+          </div>
+    </div>
+    <div class="sidecontainer">
+        <h6>Select Source</h6>
+        
+        <div class="dropdown">
+            <button class="btn btn-light class dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select
+            </button>
+            <ul class="dropdown-menu">
+             <li> <a class="dropdown-item" id="a" href="#">Hp printer</a></li>
+             <li></li> <a class="dropdown-item" id="b" href="#">Canon</a></li>
+             <li></li> <a class="dropdown-item" id="c" href="#">Something else here</a></li>
+            </ul>
+           
+            
+            <script type="text/javascript">
+                $(function(){
+                  $("#a").click(function () {
+                  $("#opt").text($(this).text());
+                  });
+                  $("#b").click(function () {
+                  $("#opt").text($(this).text());
+                  });
+                  $("#c").click(function () {
+                  $("#opt").text($(this).text());
+                  });
+                });
+                </script>
+           
+
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          Show UI
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          Auto Feeder
+        </label>
+      </div>
+    </br>
+
+     <div class="buttons">
+   <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Black & White
+        </label>
+    </div>
+</br>
+     
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Gray
+        </label>
+    </div>
+</br>
+   
+        <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Color
+        </label>
+    </div>
+    
+    <!--
+    <h6>Resolution</h6>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">100</a>
+          <a class="dropdown-item" href="#">150</a>
+          <a class="dropdown-item" href="#">200</a>
+        </div>-->
+        
+        
+        <div class="btn-group">
+            <h6>Resolution</h6>
+        </br>
+            <button class="btn btn-light class dropdown-toggle" type="button" data-toggle="dropdown" id="options"> <span id="opt">Chose option</span> <span class="caret"></span>
+            </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" id="1" href="#" >100</a></li>
+                <li><a class="dropdown-item" id="2" href="#">150</a></li>
+                <li><a class="dropdown-item" id="3" href="#" >200</a></li>
+                <li><a class="dropdown-item" id="4" href="#" >250</a></li>
+              </ul>
+            </div>
+        
+        <script type="text/javascript">
+        $(function(){
+          $("#1").click(function () {
+          $("#opt").text($(this).text());
+          });
+          $("#2").click(function () {
+          $("#opt").text($(this).text());
+          });
+          $("#3").click(function () {
+          $("#opt").text($(this).text());
+          });
+          $("#4").click(function () {
+          $("#opt").text($(this).text());
+          });
+        });
+        </script>
+     
+     <div class="scan">
+<div>
+    <input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
+<label class="btn btn-outline-secondary" for="btn-check-2-outlined">Scan and Save1</label><br>
+</div>
+
+<div>
+    <input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
+<label class="btn btn-outline-secondary" for="btn-check-2-outlined">Scan and Save2</label><br>
+</div>
+
+<div>
+    <input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
+<label class="btn btn-outline-secondary" for="btn-check-2-outlined">Remove Blank Images</label><br>
+</div>
+
+<div>
+    <input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
+<label class="btn btn-outline-secondary" for="btn-check-2-outlined">Remove All Images</label><br>
+</div>
+
+</div>
+  </div>
+  
+    <script type="text/javascript">
+        var DWObject;
+
+        function Dynamsoft_OnReady() {
+            DWObject = Dynamsoft.DWT.GetWebTwain('dwtcontrolContainer');
+        }
+
+        function AcquireImage() {
+         if (DWObject) {
+         if (Dynamsoft.Lib.env.bMobile) {
+            var showVideoConfigs = {
+				scannerViewer:{
+				    autoDetect:{
+					  enableAutoDetect: true
+					}
+				},
+				filterViewer: {
+					exitDocumentScanAfterSave: true
+				}
+			};
+				
+            if (DWObject) {
+                if(!DWObject.UseLocalService) {
+					DWObject.Addon.Camera.scanDocument(showVideoConfigs).then(
+					function(){console.log("OK");}, 
+					function(error){console.log(error.message);});
+				    } 
+                }
+         } 
+            else {
+                    DWObject.SelectSource(function() {
+                            DWObject.OpenSource();
+                            DWObject.AcquireImage();
+                        },
+                        function() {
+                            console.log("SelectSource failed!");
+                        }
+                    );
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+body{
+    margin:auto;
+    background-color: rgb(252, 244, 236) !important;
+}
+.dwtcontrolContainer {
+    float:left;
+    height:500px;
+    width:800px;
+    Margin-top:10px;
+    border-style: solid;
+    border-color: black;
+   
+}
+.dwtcontrolContainer>.ScrollStyle
+{
+    max-height: 150px;
+    overflow-y: auto;
+    overflow: scroll;
+}
+
+.sidecontainer {
+float:left;
+Margin-top:10px;
+height: 1000px;
+width: 500px;
+margin-left: 50px;
+}
+.form-check{
+    float:left;
+    margin-top:10px;
+    margin-left: 5px;
+    height: 50px;
+}
+.buttons{
+    float:left;
+    margin-top:10px;
+    margin-left: -200px;
+}
+.buttons >.form-check{
+
+
+    float:left;
+    height: 50px;
+
+
+}
+.scan{
+    margin-top: 10px;
+}
