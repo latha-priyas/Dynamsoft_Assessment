@@ -18,6 +18,7 @@
     <div class="dwtcontrolContainer">
        
         <input type="button" value="Scan" onclick="AcquireImage();" />
+        <input type="button" id="mobileFile" value="Acquire" style="font-size: x-large;display:none" onclick="LoadImage()" />
  
         <div class="ScrollStyle">
             Image1 </br>
@@ -170,45 +171,99 @@
   
     <script type="text/javascript">
         var DWObject;
-
+        Dynamsoft.DWT.ResourcesPath = "./Dybamsoft_assessment/Resources";
+        Dynamsoft.DWT.ProductKey = 't0068UwAAAFq7ijNCDRYiTHed1+oF+ZCj0I+/qBmE2W4MeFihfbB/GZphcTmsfx03T+YVAgEOZuppcaUDV/m5hv1wUcLb05c=;t0068UwAAADjve30tloA1C+HLXMo7TvfJH7TrKF3Ftf78mQI3uQomM8/Y2nDEYQ3NKRT+k2miKtKrv6qUq6O1hz4r0Ka+FnQ=';
+       
         function Dynamsoft_OnReady() {
             DWObject = Dynamsoft.DWT.GetWebTwain('dwtcontrolContainer');
+            updateSources();
         }
 
         function AcquireImage() {
-         if (DWObject) {
-         if (Dynamsoft.Lib.env.bMobile) {
-            var showVideoConfigs = {
-				scannerViewer:{
-				    autoDetect:{
-					  enableAutoDetect: true
-					}
-				},
-				filterViewer: {
-					exitDocumentScanAfterSave: true
-				}
-			};
-				
-            if (DWObject) {
-                if(!DWObject.UseLocalService) {
-					DWObject.Addon.Camera.scanDocument(showVideoConfigs).then(
-					function(){console.log("OK");}, 
-					function(error){console.log(error.message);});
-				    } 
-                }
-         } 
-            else {
-                    DWObject.SelectSource(function() {
-                            DWObject.OpenSource();
-                            DWObject.AcquireImage();
-                        },
-                        function() {
-                            console.log("SelectSource failed!");
-                        }
-                    );
-                }
-            }
+      if (DWObject) {
+        DWObject.SelectSourceByIndex(document.getElementById("source").selectedIndex);
+        DWObject.OpenSource();
+        var pixelType = 2;
+        var pixelTypeInputs = document.getElementsByName("PixelType");
+        for (var i = 0; i < pixelTypeInputs.length; i++) {
+          if (pixelTypeInputs[i].checked) {
+            pixelType = pixelTypeInputs[i].value;
+            break;
+          }
         }
+        DWObject.AcquireImage(
+          {
+            IfShowUI: document.getElementById("ShowUI").checked,
+            IfFeederEnabled: document.getElementById("ADF").checked,
+            PixelType: pixelType,
+            Resolution: parseInt(document.getElementById("Resolution").value),
+            IfDisableSourceAfterAcquire: true
+          },
+          function () {
+            console.log("Successful!");
+          },
+          function (settings, errCode, errString) {
+            alert(errString)
+          }
+        );
+      }
+    }
+
+    function LoadImage() {
+      DWObject.LoadImageEx('', 5);
+    }
+            window.onload = function () {
+      if (Dynamsoft.Lib.env.bMobile) {
+        document.getElementById('scanOptions').style.display = "none";
+        document.getElementById('mobileFile').style.display = "";
+      }
+      Dynamsoft.DWT.Containers = [{ContainerId:'dwtcontrolContainer', Width:600, Height:800}];
+      Dynamsoft.DWT.Load();
+    };
+    var DWObject;
+
+function Dynamsoft_OnReady() {
+  DWObject = Dynamsoft.DWT.GetWebTwain('dwtcontrolContainer'); // Get the Dynamic Web TWAIN object that is embeded in the div with id 'dwtcontrolContainer'
+  if (DWObject) {
+    var count = DWObject.SourceCount;
+    for (var i = 0; i < count; i++)
+      document.getElementById("source").options.add(new Option(DWObject.GetSourceNameItems(i), i));
+  }
+}
+				
+function AcquireImage() {
+      if (DWObject) {
+        DWObject.SelectSourceByIndex(document.getElementById("source").selectedIndex);
+        DWObject.OpenSource();
+        var pixelType = 2;
+        var pixelTypeInputs = document.getElementsByName("PixelType");
+        for (var i = 0; i < pixelTypeInputs.length; i++) {
+          if (pixelTypeInputs[i].checked) {
+            pixelType = pixelTypeInputs[i].value;
+            break;
+          }
+        }
+        DWObject.AcquireImage(
+          {
+            IfShowUI: document.getElementById("ShowUI").checked,
+            IfFeederEnabled: document.getElementById("ADF").checked,
+            PixelType: pixelType,
+            Resolution: parseInt(document.getElementById("Resolution").value),
+            IfDisableSourceAfterAcquire: true
+          },
+          function () {
+            console.log("Successful!");
+          },
+          function (settings, errCode, errString) {
+            alert(errString)
+          }
+        );
+      }
+    }
+
+    function LoadImage() {
+      DWObject.LoadImageEx('', 5);
+    }
     </script>
 </body>
 
